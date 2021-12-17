@@ -6,7 +6,7 @@
 
 ## 프로토타입이란:
 
-- 자바스크립트 객체에서 \_\_proto__ 혹은 [[prototype]] 안에 정의된 것
+- 자바스크립트 객체에서 \_\_proto__ 혹은 [[prototype]] 안에 정의된 것  
 ![proto examples](https://user-images.githubusercontent.com/44242823/145678953-ae488a0a-0f88-4efa-af88-be49302f5d97.png)
 
 
