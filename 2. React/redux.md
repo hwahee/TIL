@@ -13,9 +13,19 @@ ref. from [공식 사이트](https://ko.redux.js.org/introduction/getting-starte
 ### reducer
 (state, action)=>state 형태의 순수 함수 - side effect가 일어나지 않음
 
+        const reducer = (oldState = initState, action) => {
+        switch (action.type) {
+                case 'CHANGE_COLOR':
+                return { ...oldState, color: action.color }
+        ...
+        
+spread 연산자를 사용하여 oldState를 바꾸지 않고 값만 복사한 다음 변경을 원하는 값만 변경하여 리턴한 형태
+
+
 
 ## 효과
 - action에 따른 상태의 변경 사항을 추적할 수 있음 -> 디버그 시 시간 순으로 변화를 추적하는 것이 가능함
+- undo, redo가 쉬움
 - side effect가 일어나지 않음 -> 테스트 시 일어날 수 있는 문제가 줄어듦
 
 
