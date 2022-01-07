@@ -35,7 +35,7 @@ ref. from [sof](https://stackoverflow.com/questions/38861601/how-to-only-trigger
 
     > me
     > daddy
-    > grammy
+    > granny
 
 만약 capture 단계에서 이벤트를 발생시켜야 한다면 addEventLister의 3번째 인자인 useCapture를 true로 놓으면 된다. 그럼 capture 단계에서 root부터 말단 노드로 내려가는 도중에 이벤트가 발새하게 되는 것이다.
 
@@ -45,7 +45,7 @@ ref. from [sof](https://stackoverflow.com/questions/38861601/how-to-only-trigger
 
     > daddy
     > me
-    > grammy
+    > granny
 
 
 ## 이벤트의 전파 중단: stopPropagation()
@@ -73,4 +73,4 @@ capture와 bubbling은 발생한 이벤트를 전파하는 단계이다. 이 단
     > granny
     > daddy
 
-이번엔 granny와 daddy 모두 capture 단계에서 이벤트를 발생시키도록 했다. 그 다음 daddy가 이벤트 전파를 끊어버리도록 했다. 그 결과 root에서 말단 방향으로 실행되었으나 중간에서 전파가 끊겨 결국 타겟 노드에 이벤트가 도달하지 못하고 끊겨버레기 되었다. 
+이번엔 granny와 daddy 모두 capture 단계에서 이벤트를 발생시키도록 했다. 그 다음 daddy가 이벤트 전파를 끊어버리도록 했다. 그 결과 root에서 말단 방향으로 실행되었으나 중간에서 전파가 끊겨 결국 타겟 노드에 이벤트가 도달하지 못하고 끊겨버리게 되었다. 
