@@ -7,7 +7,7 @@ ref. from [공식 사이트](https://ko.redux.js.org/introduction/getting-starte
 - 모든 컴포넌트의 상태 관리를 하나의 store에서 관리한다
 
 
-## 특징
+## 특징과 부품
 앱의 상태는 단일 store안의 객체 트리에만 저장됨 - 이 상태 트리를 변경하는 방법은 reducer를 작성하여 action을 보내는 것
 
 ### reducer
@@ -21,6 +21,13 @@ ref. from [공식 사이트](https://ko.redux.js.org/introduction/getting-starte
         
 spread 연산자를 사용하여 oldState를 바꾸지 않고 값만 복사한 다음 변경을 원하는 값만 변경하여 리턴한 형태
 
+### slice
+함수 목록에 있는 함수들이 자동으로 리류서와 state에 상응하는 action으로 만들어진다
+
+### selector
+state에 있는 요소 중 특정한 것만 필요할 경우 사용할 수 있다
+
+        useSelector((state: RootState) => state.counter.value)
 
 
 ## 효과
