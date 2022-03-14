@@ -4,12 +4,12 @@
 
 ref. from [sof](https://stackoverflow.com/questions/38861601/how-to-only-trigger-parent-click-event-when-a-child-is-clicked), [W3](https://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)
 
-## 문제
 
+## 문제
 드래그 스크롤 가능한 div가 있다. 이 div 안에는 자식 div가 여러 개 나열되어 있다. 그런데 드래그를 하려고 클릭을 하면 필연적으로 자식 div를 건드릴 수 빆에 없는데 이때 불필요하게 자식 div의 이벤트를 발생시키게 된다. 이 때 부모 div만 이벤트를 발생시키고 자식은 가만히 둘 수는 없을까?
 
-## 이벤트 발생과 DOM 이벤트 흐름
 
+## 이벤트 발생과 DOM 이벤트 흐름
 예시 코드
 
         <div id="granny">
@@ -74,3 +74,23 @@ capture와 bubbling은 발생한 이벤트를 전파하는 단계이다. 이 단
     > daddy
 
 이번엔 granny와 daddy 모두 capture 단계에서 이벤트를 발생시키도록 했다. 그 다음 daddy가 이벤트 전파를 끊어버리도록 했다. 그 결과 root에서 말단 방향으로 실행되었으나 중간에서 전파가 끊겨 결국 타겟 노드에 이벤트가 도달하지 못하고 끊겨버리게 되었다. 
+
+
+## 이벤트 객체에 새로운 요소 추가해서 보내기
+granny에서 발생한 이벤트가 daddy까지만 영향을 미치고 me에는 영향을 끼치면 안되는 상황을 가정하자  
+이때 daddy는 건드리면 안 되는 상황이라면 어떤 방법을 써야 할까?
+
+    document.getElementById('granny')
+        .addEventListener('mouseup', (e) => { e["callme"]=false }, true)
+    document.getElementById('daddy')
+        .addEventListener('mouseup', (e) => { console.log('daddy') }, true)
+    document.getElementById('me')
+        .addEventListener('mouseup', (e) => { 
+            if(e["callme"])
+                console.log('me') 
+        })
+
+코드의 **e["callme"]=false** 처럼 이벤트 객체에 새로운 요소를 추가할 수 있다. 이렇게 하면 이벤트가 경로를 따라 가면서 필요한 부분에서 요소를 추가하고 다른 부분에서 해당 요소를 사용할 수 있다
+
+
+
